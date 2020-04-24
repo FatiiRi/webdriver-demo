@@ -14,7 +14,7 @@ public class DeleteTaskTest {
 	}
 	
 	public void deleteTask() {
-		WebElement deleteTaskButton = driver.findElement(By.id("deleteTaskBtn"));
+		WebElement deleteTaskButton = driver.findElements(By.id("deleteTaskBtn")).get(0);
 		deleteTaskButton.click();
 	}
 

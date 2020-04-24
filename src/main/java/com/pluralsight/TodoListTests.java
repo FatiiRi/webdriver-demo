@@ -25,7 +25,20 @@ public class TodoListTests {
 		viewTaskTest = new ViewTaskTest(driver); 
 		
 		driver.get("http://localhost:4200");
-		createTaskTest.createTask();		
+		
+		try {
+			createTaskTest.createTask();
+			Thread.sleep(4000);
+			updateTaskTest.updateTask();
+			Thread.sleep(4000);
+			viewTaskTest.viewTask();
+			Thread.sleep(4000);
+			deleteTaskTest.deleteTask();
+
+			
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		
 
 	}
