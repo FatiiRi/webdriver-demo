@@ -4,15 +4,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class UpdateTaskTest {
-	private WebDriver driver;
+public class UpdateTaskTest extends TaskTest{
 
 	public UpdateTaskTest(WebDriver driver) {
-		super();
-		this.driver = driver;
+		super(driver);
 	}
 	
-	public void updateTask() {
+	public String updateTask() {
+		
 		WebElement updateTaskButton = driver.findElement(By.id("updateTaskBtn"));
 		updateTaskButton.click();
 		
@@ -23,20 +22,15 @@ public class UpdateTaskTest {
 		descriptionField.sendKeys(" Updated");
 		
 		WebElement isDoneCheckBox = driver.findElement(By.name("isDone"));
-		isDoneCheckBox.click();
-		
-		try {
-			Thread.sleep(4000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		isDoneCheckBox.click();		
 		 
 		WebElement submitButton = driver.findElement(By.id("submitBtn")); 
 		submitButton.click();
 		
-		WebElement backToListButton = driver.findElement(By.id("backToListBtn")); 
-		backToListButton.click();
-		
+		WebElement validationMessage = driver.findElement(By.id("validationMsg"));
+	
+		return validationMessage.getText();
+				
 	}
 
 }

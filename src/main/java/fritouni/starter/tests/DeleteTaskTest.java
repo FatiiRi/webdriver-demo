@@ -4,18 +4,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class DeleteTaskTest {
+public class DeleteTaskTest extends TaskTest {
 	
-	private WebDriver driver;
-
 	public DeleteTaskTest(WebDriver driver) {
-		super();
-		this.driver = driver;
+		super(driver);
 	}
 	
-	public void deleteTask() {
+	public String deleteTask() {
 		WebElement deleteTaskButton = driver.findElements(By.id("deleteTaskBtn")).get(0);
 		deleteTaskButton.click();
+		
+		WebElement validationMessage = driver.findElement(By.id("validationMsg"));
+		return validationMessage.getText();
 	}
 
 }

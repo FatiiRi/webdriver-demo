@@ -4,23 +4,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import static org.junit.Assert.assertEquals;
-
-public class CreateTaskTest {
-
-	private WebDriver driver;
+public class CreateTaskTest extends TaskTest{
 	
 	public CreateTaskTest(WebDriver driver) {
-		super();
-		this.driver = driver;
+		super(driver);
 	}
 
-	public void createTask() {
-		try {
-			Thread.sleep(4000);
+	public String createTask() {
+
 			WebElement createTaskButton = driver.findElement(By.id("createTaskBtn"));
 			createTaskButton.click();
-			Thread.sleep(2000);
+
 			WebElement nameField = driver.findElement(By.name("taskName"));
 			nameField.sendKeys("Selenuim task name");
 			
@@ -32,19 +26,13 @@ public class CreateTaskTest {
 			
 			WebElement createdOnField = driver.findElement(By.name("createdOn"));
 			createdOnField.sendKeys("2020-04-24");						
-			Thread.sleep(4000);
 						 
 			WebElement submitButton = driver.findElement(By.id("submitBtn")); 
 			submitButton.click();
-			
+		
 			WebElement validationMessage = driver.findElement(By.id("validationMsg"));
-			assertEquals(validationMessage.getText(),"Your task has been submitted !");
 			
-			WebElement backToListButton = driver.findElement(By.id("backToListBtn")); 
-			backToListButton.click();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+			return validationMessage.getText();
 	}
 
 }
