@@ -1,7 +1,6 @@
 package com.pluralsight;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -56,7 +55,7 @@ public class TodoListUnitTests {
 		deleteTaskTest.backToList();
 	}
 	
-	//@After
+	@After
 	public void cleanUp() {
 		driver.close();	
 	}
